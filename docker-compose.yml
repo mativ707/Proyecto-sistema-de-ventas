@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+  eureka-sv:
+    build: eureka-sv
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+    networks:
+      - 'sistemaDeVentas-network'
+  productos-serv:
+    build: productos-serv
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    networks:
+      - 'sistemaDeVentas-network'
+  carrito-serv:
+    build: carrito-serv
+    mem_limit: 512m
+    ports:
+      - "8084:8084"
+    networks:
+      - 'sistemaDeVentas-network'
+  ventas-serv:
+    build: ventas-serv
+    mem_limit: 512m
+    ports:
+      - "8087:8087"
+
+networks:
+  sistemaDeVentas-network:
