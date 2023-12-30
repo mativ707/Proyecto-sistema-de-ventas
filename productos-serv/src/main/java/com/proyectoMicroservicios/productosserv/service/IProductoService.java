@@ -9,8 +9,8 @@ public interface IProductoService{
     public List<Producto>getProductos();
     public Producto getProductoById(Long id);
     public List<Producto>getProductosById(List<Long>ids);
-    public void saveProducto(String nombre, String marca, Double precio);
+    public void saveProducto(String nombre, String marca, Double precio) throws Exception;
     public void deleteProducto(Long id);
-    public void modifyProducto(Long id, Producto producto);
+    public void modifyProducto(Long id, Producto producto) throws Exception;
 
 }

@@ -29,7 +29,7 @@ public class ProductoController {
     }
 
     @PostMapping("/crear")
-    public String saveProducto(@RequestBody Producto producto) {
+    public String saveProducto(@RequestBody Producto producto) throws Exception {
         prodServ.saveProducto(producto.getNombre(),
                 producto.getMarca(), producto.getPrecio());
 

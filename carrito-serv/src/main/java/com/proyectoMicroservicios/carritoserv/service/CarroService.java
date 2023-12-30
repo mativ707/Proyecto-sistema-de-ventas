@@ -4,6 +4,8 @@ import com.proyectoMicroservicios.carritoserv.dto.ProductoDTO;
 import com.proyectoMicroservicios.carritoserv.model.Carro;
 import com.proyectoMicroservicios.carritoserv.repository.ICarroRepository;
 import com.proyectoMicroservicios.carritoserv.repository.IProductoAPIClient;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class CarroService implements ICarroService {
     private IProductoAPIClient productoAPI;
 
     @Override
+    @CircuitBreaker(name = "producto-serv", fallbackMethod = "fallBackGetProductosById")
+    @Retry(name = "producto-serv")
     public void saveCarro(List<Long> idProductos) {
         Carro carro = new Carro();
 
@@ -41,6 +45,14 @@ public class CarroService implements ICarroService {
         carro.setTotal(precios);
         //Guardamos
         carroRepo.save(carro);
+    }
+
+    public List<ProductoDTO> fallBackGetProductosById(Throwable throwable){
+
+        List<ProductoDTO> errorList = new ArrayList<>();
+        errorList.add(new ProductoDTO(99999L, "ERROR", "ERROR", 0.0));
+
+        return errorList;
     }
 
     @Override

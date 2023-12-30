@@ -29,7 +29,10 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public void saveProducto(String nombre, String marca, Double precio) {
+    public void saveProducto(String nombre, String marca, Double precio) throws Exception {
+
+        validar(nombre,marca,precio);
+
         //Instanciamos
         Producto prod = new Producto();
         //Seteamos atributos
@@ -47,7 +50,28 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public void modifyProducto(Long id, Producto producto) {
+    public void modifyProducto(Long id, Producto producto) throws Exception {
 
+        Producto productoEditar = productoRepo.findById(id).orElse(null);
+
+        if(productoEditar != null){
+            productoEditar = producto;
+            productoRepo.save(productoEditar);
+        }else{
+            throw new Exception("El producto a editar no se ha encontrado");
+        }
+    }
+
+    public void validar (String nombre, String marca, Double precio) throws Exception {
+
+        if(nombre == null || nombre.isEmpty()){
+            throw new Exception("El nombre no es válido o esta vacío");
+        }
+        if(marca == null || marca.isEmpty()){
+            throw new Exception("La marca no es válida o esta vacío");
+        }
+        if(precio == null || precio.isNaN()){
+            throw new Exception("El precio no es válido o esta vacío");
+        }
     }
 }

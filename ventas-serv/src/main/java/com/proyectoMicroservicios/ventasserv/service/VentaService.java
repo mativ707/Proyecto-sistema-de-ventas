@@ -47,7 +47,7 @@ public class VentaService implements IVentaService{
     }
 
     @Override
-    @CircuitBreaker(name = "carrito-service", fallbackMethod = "fallBackGetCarroById")
+    @CircuitBreaker(name = "carrito-serv", fallbackMethod = "fallBackGetCarroById")
     public VentaDTO consultaVenta(Long idVenta) throws Exception {
 
         VentaDTO consulta = new VentaDTO();
