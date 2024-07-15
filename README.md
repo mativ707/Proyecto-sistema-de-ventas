@@ -40,5 +40,8 @@ Para poner en marcha el proyecto, sigue estos pasos:
 - Eureka (para el descubrimiento de servicios)
 - Feign (para la comunicación entre microservicios)
 - Docker (opcional, para la contenedorización)
-Autor
-LinkedIn: Matías Velázquez
+
+## Autor
+
+LinkedIn : [Matias Velazquez](https://www.linkedin.com/in/mativ707)
+
