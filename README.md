@@ -1,13 +1,25 @@
-Sistema de Ventas
+# Sistema de Ventas
 
-Este proyecto es una aplicación de un sistema de ventas aplicando el patron de diseño de Microservicios. Se encuentra dividido en 3 microservicios:
+Este proyecto es una aplicación de un sistema de ventas desarrollada siguiendo el patrón de diseño de Microservicios. La arquitectura está dividida en tres microservicios principales:
 
-1- Productos: Almacena en su BD todos los productos con un identificador único (code) y demás características como el nombre, precio y marca.
-2- Carrito: Se comunica con el servicio Productos para obtener un precio total de los productos mediante su id.
-3- Venta: Registra cada venta mediante una fecha y un carrito de compra.
+### **Microservicios**
 
-Inicio rápido:
+1. **Productos:**
+   - Almacena todos los productos en su base de datos.
+   - Cada producto tiene un identificador único (`code`), nombre, precio y marca.
 
-1- Clone el repositorio.
-2- Cree las correspondientes bases de datos (ya que estuvo siendo trabajada con BD locales) y configure el application properties en cada microservicio.
-3- Puede ejecutar en su IDE de preferencia.
+2. **Carrito:**
+   - Se comunica con el servicio de Productos para obtener el precio total de los productos agregados al carrito mediante sus identificadores (`id`).
+   - Gestiona la lógica del carrito de compras.
+
+3. **Venta:**
+   - Registra cada venta con una fecha y un carrito de compra asociado.
+   - Almacena los detalles de cada transacción realizada.
+
+### **Inicio Rápido**
+
+Para poner en marcha el proyecto, sigue estos pasos:
+
+1. **Clona el repositorio:**
+   ```sh
+   git clone [[URL del repositorio](https://github.com/mativ707/Proyecto-sistema-de-ventas)]
